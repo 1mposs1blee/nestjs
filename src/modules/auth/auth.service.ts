@@ -22,7 +22,7 @@ export class AuthService {
     return this.userService.createUser(dto);
   }
 
-  async loginUser(dto: UserLoginDto): Promise<any> {
+  async loginUser(dto: UserLoginDto): Promise<AuthUserResponse> {
     const existUser = await this.userService.findUserByEmail(dto.email);
 
     if (!existUser) throw new BadRequestException(AppError.USER_NOT_EXIST);
